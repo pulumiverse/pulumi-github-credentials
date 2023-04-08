@@ -1,0 +1,20 @@
+{
+    "name": "@pulumiverse/github-credentials",
+    "version": "${VERSION}",
+    "scripts": {
+        "build": "tsc",
+        "install": "node scripts/install-pulumi-plugin.js resource github-credentials ${VERSION}"
+    },
+    "dependencies": {
+        "@pulumi/aws": "^4.0.0"
+    },
+    "devDependencies": {
+        "typescript": "5.0.4"
+    },
+    "peerDependencies": {
+        "@pulumi/pulumi": "latest"
+    },
+    "pulumi": {
+        "resource": true
+    }
+}

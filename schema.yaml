@@ -1,0 +1,41 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/pulumi/pulumi/master/pkg/codegen/schema/pulumi.json
+---
+name: github-credentials
+resources:
+  github-credentials:index:StaticPage:
+    isComponent: true
+    inputProperties:
+      indexContent:
+        type: string
+        description: The HTML content for index.html.
+    requiredInputs:
+      - indexContent
+    properties:
+      bucket:
+        "$ref": "/aws/v4.0.0/schema.json#/resources/aws:s3%2Fbucket:Bucket"
+        description: The bucket resource.
+      websiteUrl:
+        type: string
+        description: The website URL.
+    required:
+      - bucket
+      - websiteUrl
+language:
+  csharp:
+    packageReferences:
+      Pulumi: 3.*
+      Pulumi.Aws: 4.*
+  go:
+    generateResourceContainerTypes: true
+    importBasePath: github.com/pulumiverse/pulumi-github-credentials/sdk/go/github-credentials
+  nodejs:
+    packageName: "@pulumiverse/github-credentials"
+    dependencies:
+      "@pulumi/aws": "^4.0.0"
+    devDependencies:
+      typescript: "5.0.4"
+  python:
+    packageName: pulumiverse_github_credentials
+    requires:
+      pulumi: ">=3.0.0,<4.0.0"
+      pulumi-aws: ">=4.0.0,<5.0.0"
