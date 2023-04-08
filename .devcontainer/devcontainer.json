@@ -1,0 +1,6 @@
+{
+    "name": "pulumi-github-credentials",
+    "build": {
+        "dockerfile": "Dockerfile"
+    }
+}
