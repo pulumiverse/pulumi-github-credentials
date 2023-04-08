@@ -2,24 +2,17 @@
 ---
 name: github-credentials
 resources:
-  github-credentials:index:StaticPage:
+  github-credentials:index:WorkloadIdentityPoolForGithub:
     isComponent: true
     inputProperties:
-      indexContent:
+      identityPoolName:
         type: string
-        description: The HTML content for index.html.
-    requiredInputs:
-      - indexContent
+        description: The name of the identity pool.
+    requiredInputs: []
     properties:
-      bucket:
-        "$ref": "/aws/v4.0.0/schema.json#/resources/aws:s3%2Fbucket:Bucket"
-        description: The bucket resource.
-      websiteUrl:
-        type: string
-        description: The website URL.
-    required:
-      - bucket
-      - websiteUrl
+      identityPool:
+        "$ref": "/google-native/v0.29.0/schema.json#/resources/google-native:iam%2Fv1:WorkloadIdentityPool"
+        description: The identity pool resource.
 language:
   csharp:
     packageReferences:
@@ -32,6 +25,7 @@ language:
     packageName: "@pulumiverse/github-credentials"
     dependencies:
       "@pulumi/aws": "^4.0.0"
+      "@pulumi/google-native": "0.29.0"
     devDependencies:
       typescript: "5.0.4"
   python:

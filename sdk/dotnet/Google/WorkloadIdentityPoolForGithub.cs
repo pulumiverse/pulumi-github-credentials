@@ -7,33 +7,27 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GithubCredentials
+namespace Pulumi.GithubCredentials.Google
 {
-    [GithubCredentialsResourceType("github-credentials:index:StaticPage")]
-    public partial class StaticPage : global::Pulumi.ComponentResource
+    [GithubCredentialsResourceType("github-credentials:google:WorkloadIdentityPoolForGithub")]
+    public partial class WorkloadIdentityPoolForGithub : global::Pulumi.ComponentResource
     {
         /// <summary>
-        /// The bucket resource.
+        /// The identity pool resource.
         /// </summary>
-        [Output("bucket")]
-        public Output<Pulumi.Aws.S3.Bucket> Bucket { get; private set; } = null!;
-
-        /// <summary>
-        /// The website URL.
-        /// </summary>
-        [Output("websiteUrl")]
-        public Output<string> WebsiteUrl { get; private set; } = null!;
+        [Output("identityPool")]
+        public Output<Pulumi.GoogleNative.IAM.V1.WorkloadIdentityPool?> IdentityPool { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a StaticPage resource with the given unique name, arguments, and options.
+        /// Create a WorkloadIdentityPoolForGithub resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public StaticPage(string name, StaticPageArgs args, ComponentResourceOptions? options = null)
-            : base("github-credentials:index:StaticPage", name, args ?? new StaticPageArgs(), MakeResourceOptions(options, ""), remote: true)
+        public WorkloadIdentityPoolForGithub(string name, WorkloadIdentityPoolForGithubArgs? args = null, ComponentResourceOptions? options = null)
+            : base("github-credentials:google:WorkloadIdentityPoolForGithub", name, args ?? new WorkloadIdentityPoolForGithubArgs(), MakeResourceOptions(options, ""), remote: true)
         {
         }
 
@@ -50,17 +44,17 @@ namespace Pulumi.GithubCredentials
         }
     }
 
-    public sealed class StaticPageArgs : global::Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolForGithubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The HTML content for index.html.
+        /// The name of the identity pool.
         /// </summary>
-        [Input("indexContent", required: true)]
-        public Input<string> IndexContent { get; set; } = null!;
+        [Input("identityPoolName")]
+        public Input<string>? IdentityPoolName { get; set; }
 
-        public StaticPageArgs()
+        public WorkloadIdentityPoolForGithubArgs()
         {
         }
-        public static new StaticPageArgs Empty => new StaticPageArgs();
+        public static new WorkloadIdentityPoolForGithubArgs Empty => new WorkloadIdentityPoolForGithubArgs();
     }
 }

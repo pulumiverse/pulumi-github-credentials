@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/s3"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -135,6 +135,16 @@ func (o StaticPageOutput) ToStaticPageOutput() StaticPageOutput {
 
 func (o StaticPageOutput) ToStaticPageOutputWithContext(ctx context.Context) StaticPageOutput {
 	return o
+}
+
+// The bucket resource.
+func (o StaticPageOutput) Bucket() s3.BucketOutput {
+	return o.ApplyT(func(v *StaticPage) s3.BucketOutput { return v.Bucket }).(s3.BucketOutput)
+}
+
+// The website URL.
+func (o StaticPageOutput) WebsiteUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticPage) pulumi.StringOutput { return v.WebsiteUrl }).(pulumi.StringOutput)
 }
 
 type StaticPageArrayOutput struct{ *pulumi.OutputState }

@@ -5,11 +5,23 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./provider";
-export * from "./staticPage";
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-// Import resources to register:
-import { StaticPage } from "./staticPage";
+export { StaticPageArgs } from "./staticPage";
+export type StaticPage = import("./staticPage").StaticPage;
+export const StaticPage: typeof import("./staticPage").StaticPage = null as any;
+utilities.lazyLoad(exports, ["StaticPage"], () => require("./staticPage"));
+
+
+// Export sub-modules:
+import * as google from "./google";
+
+export {
+    google,
+};
 
 const _module = {
     version: utilities.getVersion(),
@@ -23,9 +35,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("github-credentials", "index", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("github-credentials", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

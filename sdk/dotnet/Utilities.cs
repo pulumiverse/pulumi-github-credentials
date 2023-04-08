@@ -74,7 +74,7 @@ namespace Pulumi.GithubCredentials
         }
     }
 
-    internal sealed class GithubCredentialsResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class GithubCredentialsResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public GithubCredentialsResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

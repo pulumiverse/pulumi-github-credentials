@@ -38,6 +38,7 @@ def readme():
 
 
 setup(name='pulumiverse_github_credentials',
+      python_requires='>=3.7',
       version=VERSION,
       long_description=readme(),
       long_description_content_type='text/markdown',
