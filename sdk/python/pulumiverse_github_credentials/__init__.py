@@ -6,32 +6,16 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .provider import *
-from .static_page import *
-
-# Make subpackages available:
-if typing.TYPE_CHECKING:
-    import pulumiverse_github_credentials.google as __google
-    google = __google
-else:
-    google = _utilities.lazy_import('pulumiverse_github_credentials.google')
-
+from .workload_identity_pool_for_github import *
 _utilities.register(
     resource_modules="""
 [
  {
   "pkg": "github-credentials",
-  "mod": "google",
-  "fqn": "pulumiverse_github_credentials.google",
-  "classes": {
-   "github-credentials:google:WorkloadIdentityPoolForGithub": "WorkloadIdentityPoolForGithub"
-  }
- },
- {
-  "pkg": "github-credentials",
   "mod": "index",
   "fqn": "pulumiverse_github_credentials",
   "classes": {
-   "github-credentials:index:StaticPage": "StaticPage"
+   "github-credentials:index:WorkloadIdentityPoolForGithub": "WorkloadIdentityPoolForGithub"
   }
  }
 ]

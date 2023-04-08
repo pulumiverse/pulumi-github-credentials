@@ -7,7 +7,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from .. import _utilities
+from . import _utilities
 import pulumi_google_native
 
 __all__ = ['WorkloadIdentityPoolForGithubArgs', 'WorkloadIdentityPoolForGithub']
@@ -87,7 +87,7 @@ class WorkloadIdentityPoolForGithub(pulumi.ComponentResource):
             __props__.__dict__["identity_pool_name"] = identity_pool_name
             __props__.__dict__["identity_pool"] = None
         super(WorkloadIdentityPoolForGithub, __self__).__init__(
-            'github-credentials:google:WorkloadIdentityPoolForGithub',
+            'github-credentials:index:WorkloadIdentityPoolForGithub',
             resource_name,
             __props__,
             opts,
